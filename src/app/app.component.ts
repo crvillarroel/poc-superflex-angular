@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
     <app-shipping-information></app-shipping-information>
   `,
   styles: [
-    ':host {
+    `:host {
       display: block;
       min-height: 100vh;
-    }'
+    }`
   ]
 })
 export class AppComponent {
