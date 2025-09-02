@@ -1,0 +1,253 @@
+    <div class="canvas-bg">
+      <div class="form-card">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+          <!-- Legend -->
+          <div class="legend">
+            <h2 class="legend-title">Shipping information</h2>
+            <div class="legend-desc">We ship within 2 working days</div>
+          </div>
+
+          <!-- Age Verification -->
+          <div class="checkbox-field">
+            <label class="checkbox-row">
+              <span class="custom-checkbox">
+                <input
+                  type="checkbox"
+                  formControlName="ageVerification"
+                  class="checkbox-input"
+                  required
+                />
+                <span class="checkbox-box">
+                  <img
+                    src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/91d0e1b7-e2dd-4c94-8d3c-9d60bea214a8"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </span>
+              </span>
+              <span class="checkbox-label">I confirm I am 18+ years old</span>
+            </label>
+            <div class="checkbox-desc-row">
+              <img
+                src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7433d6b6-56d5-4037-a55b-fd98a3fbe9a6"
+                alt=""
+                class="space-icon"
+                aria-hidden="true"
+              />
+              <span class="checkbox-desc">Age verification required for purchase</span>
+            </div>
+          </div>
+
+          <!-- Full Name Field -->
+          <div class="field">
+            <label for="fullName" class="field-label">Full Name</label>
+            <div class="input-wrapper">
+              <input
+                id="fullName"
+                formControlName="fullName"
+                type="text"
+                class="input"
+                [attr.aria-label]="'Full Name'"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="field">
+            <label for="email" class="field-label">Email Address</label>
+            <div class="input-wrapper">
+              <input
+                id="email"
+                formControlName="email"
+                type="email"
+                class="input"
+                [attr.aria-label]="'Email Address'"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Phone Field -->
+          <div class="field">
+            <label for="phone" class="field-label">Phone Number</label>
+            <div class="input-wrapper">
+              <input
+                id="phone"
+                formControlName="phone"
+                type="tel"
+                class="input"
+                [attr.aria-label]="'Phone Number'"
+                placeholder="Enter your phone number"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Address Field -->
+          <div class="field">
+            <label for="address" class="field-label">Street Address</label>
+            <div class="input-wrapper">
+              <input
+                id="address"
+                formControlName="address"
+                type="text"
+                class="input"
+                [attr.aria-label]="'Street Address'"
+                placeholder="Enter your address"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- City and Postal Code Row -->
+          <div class="field-row">
+            <div class="field field-half">
+              <label for="city" class="field-label">City</label>
+              <div class="input-wrapper">
+                <input
+                  id="city"
+                  formControlName="city"
+                  type="text"
+                  class="input"
+                  [attr.aria-label]="'City'"
+                  placeholder="City"
+                  required
+                />
+              </div>
+            </div>
+            <div class="field field-half">
+              <label for="postalCode" class="field-label">Postal Code</label>
+              <div class="input-wrapper">
+                <input
+                  id="postalCode"
+                  formControlName="postalCode"
+                  type="text"
+                  class="input"
+                  [attr.aria-label]="'Postal Code'"
+                  placeholder="Postal Code"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Location Field -->
+          <div class="field">
+            <label for="location" class="field-label">Country</label>
+            <div class="select-wrapper">
+              <select
+                id="location"
+                formControlName="location"
+                class="select"
+                [attr.aria-label]="'Country'"
+                required
+              >
+                <option value="" disabled selected hidden>Select Country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <option value="Australia">Australia</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+                <option value="Other">Other</option>
+              </select>
+              <img
+                src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/26f80e2f-ac3b-4227-b5cd-ee2675bf61fc"
+                alt=""
+                class="chevron"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+
+          <!-- Delivery Note Field -->
+          <div class="field">
+            <label for="deliveryNote" class="field-label">Delivery Instructions</label>
+            <div class="textarea-wrapper">
+              <textarea
+                id="deliveryNote"
+                formControlName="deliveryNote"
+                class="textarea"
+                rows="3"
+                [attr.aria-label]="'Delivery Instructions'"
+                placeholder="Special delivery instructions (optional)"
+              ></textarea>
+              <img
+                src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7433d6b6-56d5-4037-a55b-fd98a3fbe9a6"
+                alt=""
+                class="drag-icon"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+
+          <!-- Related Products Section -->
+          <div class="related-products">
+            <h3 class="related-title">Complete your order</h3>
+            <div class="products-grid">
+              <div class="product-item" *ngFor="let product of relatedProducts">
+                <div class="product-image">
+                  <img [src]="product.image" [alt]="product.name" />
+                </div>
+                <div class="product-info">
+                  <div class="product-name">{{ product.name }}</div>
+                  <div class="product-price">${{ product.price }}</div>
+                </div>
+                <button 
+                  type="button" 
+                  class="add-product-btn"
+                  (click)="addProduct(product)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms Checkbox -->
+          <div class="checkbox-field">
+            <label class="checkbox-row">
+              <span class="custom-checkbox">
+                <input
+                  type="checkbox"
+                  formControlName="acceptTerms"
+                  class="checkbox-input"
+                  required
+                />
+                <span class="checkbox-box">
+                  <img
+                    src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/91d0e1b7-e2dd-4c94-8d3c-9d60bea214a8"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </span>
+              </span>
+              <span class="checkbox-label">I accept the terms and conditions</span>
+            </label>
+            <div class="checkbox-desc-row">
+              <img
+                src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7433d6b6-56d5-4037-a55b-fd98a3fbe9a6"
+                alt=""
+                class="space-icon"
+                aria-hidden="true"
+              />
+              <a href="#" class="checkbox-desc">Read our T&amp;Cs</a>
+            </div>
+          </div>
+
+          <!-- Button Group -->
+          <div class="button-group">
+            <button
+              type="submit"
+              class="submit-btn"
+              [disabled]="form.invalid"
+            >
+              Complete Order
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
