@@ -1,0 +1,111 @@
+<div class="canvas-bg">
+  <div class="absence-card">
+    <!-- Header -->
+    <div class="absence-header">
+      <h1 class="absence-title">Resumen de ausencias</h1>
+      <p class="employee-info">Empleado: Nombre Apellido Apellido</p>
+    </div>
+
+    <!-- Filter -->
+    <form [formGroup]="filterForm" class="filter-section">
+      <div class="field">
+        <label for="absenceType" class="field-label">Tipos de ausencias</label>
+        <div class="select-wrapper">
+          <select
+            id="absenceType"
+            formControlName="absenceType"
+            class="select"
+            [attr.aria-label]="'Tipos de ausencias'"
+          >
+            <option value="">Todos</option>
+            <option value="vacations">Vacaciones</option>
+            <option value="bridges">Puentes</option>
+            <option value="free-hours">Horas de libre disposición</option>
+            <option value="paid-leave">Permisos Retribuidos</option>
+            <option value="medical-leave">Baja médica</option>
+            <option value="maternity-leave">Baja de maternidad / paternidad</option>
+          </select>
+          <img
+            src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/26f80e2f-ac3b-4227-b5cd-ee2675bf61fc"
+            alt=""
+            class="chevron"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+    </form>
+
+    <!-- Absence Sections -->
+    <div class="absence-sections">
+      <div *ngFor="let section of absenceSections" class="absence-section">
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-indicator" [style.background-color]="section.color"></div>
+          <div class="section-info">
+            <h2 class="section-title">{{ section.title }}</h2>
+            <p class="section-available" *ngIf="section.available">{{ section.available }}</p>
+          </div>
+        </div>
+
+        <!-- Requests List -->
+        <div class="requests-container">
+          <h3 class="requests-title">Listado de solicitudes</h3>
+          
+          <div *ngIf="section.requests.length > 0; else noRequests" class="requests-table">
+            <!-- Table Header -->
+            <div class="table-header">
+              <div class="header-cell">Fecha Inicio</div>
+              <div class="header-cell" *ngIf="!section.hasHours">Fecha Fin</div>
+              <div class="header-cell" *ngIf="section.hasHours">Horas</div>
+              <div class="header-cell" *ngIf="section.hasJustifications">Justificantes</div>
+              <div class="header-cell">Estado</div>
+              <div class="header-cell">Acción</div>
+            </div>
+
+            <!-- Table Rows -->
+            <div *ngFor="let request of section.requests" class="table-row">
+              <div class="table-cell">{{ request.startDate }}</div>
+              <div class="table-cell" *ngIf="!section.hasHours">{{ request.endDate }}</div>
+              <div class="table-cell" *ngIf="section.hasHours">{{ request.hours || '-' }}</div>
+              <div class="table-cell" *ngIf="section.hasJustifications">
+                <button 
+                  *ngIf="request.hasDocument" 
+                  class="doc-link"
+                  (click)="viewDocument(section.id, 0)"
+                >
+                  Ver doc. 📎
+                </button>
+                <span *ngIf="!request.hasDocument">-</span>
+              </div>
+              <div class="table-cell">
+                <span class="status-badge" [ngClass]="getStatusClass(request.status)">
+                  {{ getStatusText(request.status) }}
+                </span>
+              </div>
+              <div class="table-cell">
+                <div class="action-buttons">
+                  <button 
+                    class="action-btn approve-btn"
+                    (click)="onApprove(section.id, 0)"
+                  >
+                    Aprobar
+                  </button>
+                  <button 
+                    class="action-btn cancel-btn"
+                    (click)="onCancel(section.id, 0)"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #noRequests>
+            <p class="no-requests">No hay solicitudes de este año</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
