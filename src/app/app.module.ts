@@ -4,11 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ShippingInformationComponent } from './shipping-information/shipping-information.component';
+import { AbsenceSummaryComponent } from './absence-summary/absence-summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShippingInformationComponent
+    ShippingInformationComponent,
+    AbsenceSummaryComponent
   ],
   imports: [
     BrowserModule,
