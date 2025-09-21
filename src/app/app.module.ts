@@ -5,16 +5,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ShippingInformationComponent } from './shipping-information/shipping-information.component';
 import { AbsenceSummaryComponent } from './absence-summary/absence-summary.component';
+import { AddObjectComponent } from './add-object/add-object.component';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShippingInformationComponent,
-    AbsenceSummaryComponent
+    AbsenceSummaryComponent,
+    AddObjectComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

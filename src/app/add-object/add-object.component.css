@@ -1,0 +1,175 @@
+/* Canvas background */
+.canvas-bg {
+  background: #e5e5e5;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Card */
+.form-card {
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.legend-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+  color: #1e1e1e;
+  margin: 0;
+}
+
+/* Field */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.field-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.field-half {
+  flex: 1;
+}
+
+.field-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1e1e1e;
+  margin-bottom: 0;
+}
+
+.input-wrapper {
+  background: #f5f5f5;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 56px;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.input-wrapper:focus-within {
+  background: #fff;
+  border-color: #2c2c2c;
+}
+
+.input-wrapper.error {
+  border-color: #dc3545;
+  background: #fff5f5;
+}
+
+.input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #1e1e1e;
+  background: transparent;
+  line-height: 20px;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Error Message */
+.error-message {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #dc3545;
+  margin-top: 4px;
+  line-height: 18px;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #1e1e1e;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+  min-height: 56px;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #000000;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .canvas-bg {
+    padding: 20px 16px;
+  }
+  
+  .form-card {
+    padding: 24px;
+  }
+  
+  .field-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .legend-title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}

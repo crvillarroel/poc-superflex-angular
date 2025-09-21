@@ -1,0 +1,116 @@
+<div class="canvas-bg">
+  <div class="form-card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+      <!-- Header -->
+      <div class="legend">
+        <h2 class="legend-title">Add New Object</h2>
+      </div>
+
+      <!-- Name Field -->
+      <div class="field">
+        <label for="name" class="field-label">Name</label>
+        <div class="input-wrapper" [class.error]="isFieldInvalid('name')">
+          <input
+            id="name"
+            formControlName="name"
+            type="text"
+            class="input"
+            [attr.aria-label]="'Name'"
+            placeholder="e.g. Apple MacBook Pro 16"
+            required
+          />
+        </div>
+        <div class="error-message" *ngIf="isFieldInvalid('name')">
+          {{ getFieldError('name') }}
+        </div>
+      </div>
+
+      <!-- Year and Price Row -->
+      <div class="field-row">
+        <div class="field field-half">
+          <label for="year" class="field-label">Year</label>
+          <div class="input-wrapper" [class.error]="isFieldInvalid('year')">
+            <input
+              id="year"
+              formControlName="year"
+              type="text"
+              class="input"
+              [attr.aria-label]="'Year'"
+              placeholder="e.g. 2019"
+              required
+            />
+          </div>
+          <div class="error-message" *ngIf="isFieldInvalid('year')">
+            {{ getFieldError('year') }}
+          </div>
+        </div>
+        <div class="field field-half">
+          <label for="price" class="field-label">Price ($)</label>
+          <div class="input-wrapper" [class.error]="isFieldInvalid('price')">
+            <input
+              id="price"
+              formControlName="price"
+              type="text"
+              class="input"
+              [attr.aria-label]="'Price'"
+              placeholder="e.g. 1849.99"
+              required
+            />
+          </div>
+          <div class="error-message" *ngIf="isFieldInvalid('price')">
+            {{ getFieldError('price') }}
+          </div>
+        </div>
+      </div>
+
+      <!-- CPU Model Field -->
+      <div class="field">
+        <label for="cpuModel" class="field-label">CPU Model</label>
+        <div class="input-wrapper" [class.error]="isFieldInvalid('cpuModel')">
+          <input
+            id="cpuModel"
+            formControlName="cpuModel"
+            type="text"
+            class="input"
+            [attr.aria-label]="'CPU Model'"
+            placeholder="e.g. Intel Core i9"
+            required
+          />
+        </div>
+        <div class="error-message" *ngIf="isFieldInvalid('cpuModel')">
+          {{ getFieldError('cpuModel') }}
+        </div>
+      </div>
+
+      <!-- Hard Disk Size Field -->
+      <div class="field">
+        <label for="hardDiskSize" class="field-label">Hard Disk Size</label>
+        <div class="input-wrapper" [class.error]="isFieldInvalid('hardDiskSize')">
+          <input
+            id="hardDiskSize"
+            formControlName="hardDiskSize"
+            type="text"
+            class="input"
+            [attr.aria-label]="'Hard Disk Size'"
+            placeholder="e.g. 1 TB"
+            required
+          />
+        </div>
+        <div class="error-message" *ngIf="isFieldInvalid('hardDiskSize')">
+          {{ getFieldError('hardDiskSize') }}
+        </div>
+      </div>
+
+      <!-- Button Group -->
+      <div class="button-group">
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="form.invalid || isSubmitting"
+        >
+          {{ isSubmitting ? 'Adding...' : 'Add Object' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
