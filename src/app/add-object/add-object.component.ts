@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './add-object.component.html',
   styleUrls: ['./add-object.component.css']
 })
-export class AddObjectComponent implements OnInit {
+export class AddObjectComponent {
   form: FormGroup;
   isSubmitting = false;
 
@@ -23,8 +23,6 @@ export class AddObjectComponent implements OnInit {
       hardDiskSize: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
-
-  ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.form.valid && !this.isSubmitting) {

@@ -232,12 +232,6 @@ describe('AddObjectComponent', () => {
     });
   });
 
-  describe('ngOnInit Method', () => {
-    it('should execute without errors', () => {
-      expect(() => component.ngOnInit()).not.toThrow();
-    });
-  });
-
   describe('onSubmit Method', () => {
     beforeEach(() => {
       // Set up valid form data
