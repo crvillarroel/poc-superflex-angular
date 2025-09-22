@@ -67,6 +67,67 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
+          },
+          "configurations": {
+            "development": {
+              "browsers": "Chrome",
+              "watch": true,
+              "codeCoverage": false,
+              "progress": true,
+              "reporters": ["progress", "kjhtml"]
+            },
+            "ci": {
+              "browsers": "ChromeHeadless",
+              "watch": false,
+              "codeCoverage": true,
+              "progress": false,
+              "reporters": ["progress", "coverage"],
+              "sourceMap": false
+            },
+            "coverage": {
+              "browsers": "ChromeHeadless",
+              "watch": false,
+              "codeCoverage": true,
+              "progress": true,
+              "reporters": ["progress", "coverage"],
+              "sourceMap": true
+            },
+            "headless": {
+              "browsers": "ChromeHeadless",
+              "watch": false,
+              "codeCoverage": false,
+              "progress": true,
+              "reporters": ["progress"]
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
