@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ShippingInformationComponent } from './shipping-information/shipping-information.component';
 import { AbsenceSummaryComponent } from './absence-summary/absence-summary.component';
 import { AddObjectComponent } from './add-object/add-object.component';
+import { AddComputerComponent } from './add-computer/add-computer.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ShippingInformationComponent,
     AbsenceSummaryComponent,
-    AddObjectComponent
+    AddObjectComponent,
+    AddComputerComponent
   ],
   imports: [
     BrowserModule,

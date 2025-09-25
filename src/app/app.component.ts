@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     <app-shipping-information></app-shipping-information>
     <app-absence-summary></app-absence-summary>
     <app-add-object></app-add-object>
+    <app-add-computer></app-add-computer>
   `,
   styles: [
     `:host {

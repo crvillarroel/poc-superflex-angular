@@ -1,0 +1,45 @@
+<div class="add-computer-wrapper">
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate autocomplete="off" class="card">
+    <h2 class="title">Add Computer</h2>
+
+    <!-- Name -->
+    <div class="field">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" placeholder="e.g. Apple MacBook Pro 16" [class.invalid]="fieldInvalid('name')" />
+      <div class="error" *ngIf="fieldInvalid('name')">{{ fieldError('name') }}</div>
+    </div>
+
+    <!-- Year & Price Row -->
+    <div class="row">
+      <div class="field">
+        <label for="year">Year</label>
+        <input id="year" type="text" formControlName="year" placeholder="e.g. 2019" [class.invalid]="fieldInvalid('year')" />
+        <div class="error" *ngIf="fieldInvalid('year')">{{ fieldError('year') }}</div>
+      </div>
+      <div class="field">
+        <label for="price">Price ($)</label>
+        <input id="price" type="text" formControlName="price" placeholder="e.g. 1849.99" [class.invalid]="fieldInvalid('price')" />
+        <div class="error" *ngIf="fieldInvalid('price')">{{ fieldError('price') }}</div>
+      </div>
+    </div>
+
+    <!-- CPU Model -->
+    <div class="field">
+      <label for="cpuModel">CPU Model</label>
+      <input id="cpuModel" type="text" formControlName="cpuModel" placeholder="e.g. Intel Core i9" [class.invalid]="fieldInvalid('cpuModel')" />
+      <div class="error" *ngIf="fieldInvalid('cpuModel')">{{ fieldError('cpuModel') }}</div>
+    </div>
+
+    <!-- Hard Disk Size -->
+    <div class="field">
+      <label for="hardDiskSize">Hard Disk Size</label>
+      <input id="hardDiskSize" type="text" formControlName="hardDiskSize" placeholder="e.g. 1 TB" [class.invalid]="fieldInvalid('hardDiskSize')" />
+      <div class="error" *ngIf="fieldInvalid('hardDiskSize')">{{ fieldError('hardDiskSize') }}</div>
+    </div>
+
+    <button class="submit" type="submit" [disabled]="form.invalid || isSubmitting">{{ isSubmitting ? 'Adding...' : 'Add' }}</button>
+
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error global" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>
